@@ -2,13 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	isExpanded: true,
-	newTitle: '',
-	isValid: Ember.computed.match('newTitle', /\w*/),
+	title: '',
+	isValid: Ember.computed.match('title', /\w*/),
 	
 	actions: {
     addTask() {
-    	const taskTitle = this.get('newTitle');
-    	console.log(this.get('newTitle'));
+    	const taskTitle = this.get('title');
+    	//console.log(this.getProperties('title'));
+    	//console.log(taskTitle);
+    	
+    	//hack
+    	const myController = this.container.lookup('controller:tasks.add');
+    	//console.log(this.container.lookup('controller:tasks.add'));
+    	console.log(Ember.getOwner(this).lookup('controller:tasks.add'));
     	
     	if (!taskTitle) {
     		alert('Please type a task title!');
@@ -21,6 +27,7 @@ export default Ember.Controller.extend({
 				nextId = Math.max(...(tasks.mapBy('id')));
 				var task = store.createRecord('task', {title: taskTitle, id:nextId+1});
 				task.save();
+				myController.transitionToRoute('tasks');
 				});
 			}
 	}

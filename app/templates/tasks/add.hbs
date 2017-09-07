@@ -1,11 +1,13 @@
+   <form class="add-form" {{action "addTask" on="submit"}}>
    <div class="form-horizontal form-group form-group-lg row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-      <input type="text" class="form-control" value=newTitle placeholder="Please type task title." autofocus="autofocus"/>
+      {{input type="text" class="form-control" value=title placeholder="Please type task title." autofocus="autofocus"}}
     </div>
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
-        <button class="btn btn-primary btn-lg btn-block" {{action "addTask"}}>Add</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
     </div>
   </div>
+  </form>
 
 
 {{outlet}}
