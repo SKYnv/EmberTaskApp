@@ -1,0 +1,22 @@
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+	//templateName: 'tasks/show',
+	//renderTemplate(controller, model) {
+  //  let favController = this.controllerFor('show');
+
+  //  // Render the `favoritePost` template into
+  //  // the outlet `posts`, and display the `favoritePost`
+  //  // controller.
+  //  this.render('show', {
+  //    outlet: 'application',
+  //    controller: favController
+  //  });
+  //},
+  model(params) {
+    return this.store.findRecord('task', params.task_id);
+  },
+  renderTemplate: function(controller, model) {
+    this.render({ outlet: 'showtask' });
+  }
+});

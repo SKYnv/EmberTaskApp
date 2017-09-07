@@ -1,0 +1,11 @@
+<span {{action "toggleBody"}}><b>{{#link-to "tasks" preventDefault=false}}back to tasks list{{/link-to}}</b></span>
+<ul>
+<li>ID: {{model.id}}</li>
+<li>TITLE: {{model.title}}</li>
+<li>OWNER: {{model.user}}</li>
+<li>STATUS: {{model.status}}</li>
+<li>CREATED_AT: {{model.created_at}}</li>
+<li>TIME_ELAPSED: {{model.time_elapsed}}</li>
+<li>IS_ELAPSED: {{model.is_complete}}</li>
+</ul>
+{{outlet}}

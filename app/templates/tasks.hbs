@@ -1,0 +1,54 @@
+{{outlet "showtask"}}
+
+
+
+{{#if isExpanded}}
+
+{{else}}
+
+
+	{{!--<span {{action "toggleBody" }}>{{#link-to "tasks.add"}}add new task{{/link-to}}</span>--}}
+
+
+
+  {{#each model as |task|}}
+  <div class="container">
+  
+  <div class="col-xs-4 col-sm-4 col-md-4">
+  	
+
+    <span {{action "toggleBody"}}><p><b>{{#link-to "tasks.show" task}}{{task.title}}{{/link-to}}</b></p></span>
+    
+    <li>ID: {{task.id}}</li>
+    <li>Owner: {{task.user}}</li>
+    <li>Status: {{task.status}}</li>
+    <li>Created: {{task.created_at}}</li>
+    <li>Elapsed: {{task.time_elapsed}}</li>
+    <li>Completed: {{task.is_complete}}</li>
+   
+   <div class="btn-group">
+  <button type="button" class="btn btn-default">start/pause</button>
+      {{#unless task.is_complete}}
+  	<button type="button" class="btn btn-default">finish</button>
+		{{/unless}}
+  
+  <button type="button" class="btn btn-default" {{action "deleteTask" task}}>delete</button>
+</div>
+
+    <p>{{!--task.seconds--}}</p>
+    
+
+    </div>
+    </div>
+	{{else}}
+	Sorry, nobody is here.
+  {{/each}}
+
+
+
+{{/if}}
+
+{{outlet}}
+
+
+
