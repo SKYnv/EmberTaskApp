@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
 	actions: {
     addTask() {
     	const taskTitle = this.get('title');
+    	this.set('title', '');
     	//console.log(this.getProperties('title'));
     	//console.log(taskTitle);
     	

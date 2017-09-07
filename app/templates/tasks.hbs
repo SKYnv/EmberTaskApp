@@ -1,7 +1,7 @@
 {{outlet "showtask"}}
 
 
-  <div class="container-fluid">
+  <div class="row">
 {{#if isExpanded}}
 
 {{else}}
@@ -50,7 +50,7 @@
    <div class="btn-group">
   <button type="button" class="btn btn-default">start/pause</button>
       {{#unless task.is_complete}}
-  	<button type="button" class="btn btn-default">finish</button>
+  	<button type="button" class="btn btn-default" {{action "finishTask" task}}>finish</button>
 		{{/unless}}
   
   <button type="button" class="btn btn-default" {{action "deleteTask" task}}>delete</button>
@@ -58,8 +58,8 @@
 
     <p>{{!--task.seconds--}}</p>
     
+  </div>
 
-    </div>
 
 
 
