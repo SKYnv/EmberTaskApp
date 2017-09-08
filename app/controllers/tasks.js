@@ -12,11 +12,14 @@ export default Ember.Controller.extend({
 		},
 		finishTask(task){
 			console.log('update ', task.id);
-			var ttest = this.get('store').findRecord('task', task.id).then(function(update) {
+			
+			this.get('store').findRecord('task', task.id).then(function(update) {
 			update.set('is_complete', true);
+			update.set('status', 2);
 
-			//update.save();
-			if (update.get('isDirty')) update.save();
+			if (update.get('is_complete')){ 
+				update.save({ adapterOptions: { id: task.id } });
+				};
 			});
 
 		}
