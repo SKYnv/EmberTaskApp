@@ -1,0 +1,40 @@
+  <div class="col-xs-4 col-sm-4 col-md-4">
+  	
+
+    <p>
+    	<b>
+    		<span {{action "toggleBody"}}>
+    		{{#link-to "tasks.show" item}} 
+
+    		{{item.title}} 
+
+    		{{/link-to}}
+    		</span>
+    		    		{{#if (equals item.status 4)}}
+    		<span class="label label-info">New</span>
+    		{{else if (equals item.status 1)}}
+    		<span class="label label-success">Started</span>
+    		{{else if (equals item.status 2)}}
+    		<span class="label label-danger">Ended</span>
+    		
+    		{{else if (equals item.status 3)}}
+    		<span class="label label-warning">Paused</span>
+    		{{/if}}
+    		
+    		<span class="badge">{{item.time_elapsed}}</span>
+    		</b>
+    	</p>
+    
+    <li>ID: {{item.id}}</li>
+    <li>Owner: <a href={{item.user}}>user profile</a></li>
+
+    <li>Created: {{item.created_at}}</li>
+   
+
+  
+
+
+    <p>{{!--item.seconds--}}</p>
+    {{yield}}
+    
+  </div>

@@ -10,61 +10,16 @@
 	{{!--<span {{action "toggleBody" }}>{{#link-to "tasks.add"}}add new task{{/link-to}}</span>--}}
 
 
-
-  {{#each model as |task|}}
-
-
-  <div class="col-xs-4 col-sm-4 col-md-4">
-  	
-
-    <p>
-    	<b>
-    		<span {{action "toggleBody"}}>
-    		{{#link-to "tasks.show" task}} 
-
-    		{{task.title}} 
-
-    		{{/link-to}}
-    		</span>
-    		    		{{#if (equals task.status 4)}}
-    		<span class="label label-info">New</span>
-    		{{else if (equals task.status 1)}}
-    		<span class="label label-success">Started</span>
-    		{{else if (equals task.status 2)}}
-    		<span class="label label-danger">Ended</span>
-    		
-    		{{else if (equals task.status 3)}}
-    		<span class="label label-warning">Paused</span>
-    		{{/if}}
-    		
-    		<span class="badge">{{task.time_elapsed}}</span>
-    		</b>
-    	</p>
-    
-    <li>ID: {{task.id}}</li>
-    <li>Owner: <a href={{task.user}}>user profile</a></li>
-
-    <li>Created: {{task.created_at}}</li>
-   
-   <div class="btn-group">
-  <button type="button" class="btn btn-default">start/pause</button>
-      {{#unless task.is_complete}}
-  	<button type="button" class="btn btn-default" {{action "finishTask" task}}>finish</button>
+{{#each model as |task|}}
+ {{#task-item item=task}}
+ <button type="button" class="btn-xs btn-default">start/pause</button>
+      {{#unless item.is_complete}}
+  	<button type="button" class="btn-xs btn-default" {{action "finishTask" task}}>finish</button>
 		{{/unless}}
   
-  <button type="button" class="btn btn-default" {{action "deleteTask" task}}>delete</button>
-</div>
-
-    <p>{{!--task.seconds--}}</p>
-    
-  </div>
-
-
-
-
-	{{else}}
-	Sorry, nobody is here.
-  {{/each}}
+  <button type="button" class="btn-xs btn-default" {{action "deleteTask" task}}>delete</button>
+ {{/task-item}}
+ {{/each}}
 
 
 
